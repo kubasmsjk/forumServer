@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: Forum
+  datasource:
+    url: jdbc:postgresql://localhost:5432/forum_database
+    username: postgres
+    password: postgres
+  jpa:
+    properties:
+      hibernate:
+        default_schema: public
+    hibernate:
+      ddl-auto: update
+      properties:
+        hibernate:
+          immutable_entity_update_query_handling_mode: exception
+          jdbc:
+            batch_size: 50
+
+server:
+  port: 8081
