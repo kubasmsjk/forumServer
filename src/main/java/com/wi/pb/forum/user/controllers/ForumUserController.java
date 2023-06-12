@@ -1,4 +1,4 @@
-package com.wi.pb.forum.user.Controllers;
+package com.wi.pb.forum.user.controllers;
 
 
 import com.wi.pb.forum.user.ForumUserFacade;
