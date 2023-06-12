@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-public interface SimpleController<E extends Identifiable<ID>,DTO extends Identifiable<ID>, ID> {
+public interface SimpleController<DTO extends Identifiable<ID>, ID> {
 
 
-    SimpleFacade<E, DTO, ID> getFacade();
+    SimpleFacade<DTO, ID> getFacade();
 
     @GetMapping
     default List<DTO> getAllEntities(){

@@ -1,4 +1,6 @@
 package com.wi.pb.forum.post.dto;
 
-public class MainPostDTO {
+import com.wi.pb.forum.infrastructure.Identifiable;
+
+public class MainPostDTO extends PostDTO implements Identifiable<Long> {
 }

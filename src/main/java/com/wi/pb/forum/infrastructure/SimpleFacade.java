@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-public interface SimpleFacade<E extends Identifiable<ID>, DTO, ID>{
+public interface SimpleFacade<DTO extends Identifiable<ID>, ID>{
 
-    CrudService<E, DTO, ID> getService();
+    CrudService<?, DTO, ID> getService();
 
     default List<DTO> findAllDto(){
         return getService().findAllDto();

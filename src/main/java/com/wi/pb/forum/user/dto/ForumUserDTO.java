@@ -1,10 +1,11 @@
 package com.wi.pb.forum.user.dto;
 
+import com.wi.pb.forum.infrastructure.Identifiable;
 import com.wi.pb.forum.user.Role;
 
 import java.util.Date;
 
-public class ForumUserDTO {
+public class ForumUserDTO implements Identifiable<Long> {
     private Long id;
     private Role role;
     private String username;
