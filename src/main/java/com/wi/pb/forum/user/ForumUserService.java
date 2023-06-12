@@ -32,6 +32,6 @@ class ForumUserService implements CrudService<ForumUser, ForumUserDTO, Long> {
 
     @Override
     public ForumUserDTO mapToDto(ForumUser entity) {
-        return forumUserMapper.toDto(entity, new CycleAvoidingMappingContext());
+        return forumUserMapper.toDto(entity);
     }
 }

@@ -1,6 +1,5 @@
 package com.wi.pb.forum.category;
 
-
 import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
 

@@ -17,7 +17,10 @@ public class ViolationNotification implements Identifiable<Long> {
     private Post post;
     
     private String description;
-    //private FormUserDTO formUserDTO;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "forum_user_id", referencedColumnName = "id")
+    private ForumUser informer;
 
     @Override
     public Long getId() {
