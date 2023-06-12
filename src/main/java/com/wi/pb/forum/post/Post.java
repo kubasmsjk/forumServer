@@ -1,29 +1,47 @@
 package com.wi.pb.forum.post;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
-import com.wi.pb.forum.user.dto.ForumUserDTO;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="Post")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Post implements Identifiable<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     private String description;
 
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "form_user_id", referencedColumnName = "id")
-//    private ForumUserDTO ForumUser;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "forum_user_id", referencedColumnName = "id")
+    private ForumUser author;
+
+    public Post() {
+    }
 
     @Override
     public Long getId() {
-        return null;
+        return id;
     }
 
     @Override
     public void setId(Long aLong) {
 
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ForumUser getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(ForumUser author) {
+        this.author = author;
     }
 }

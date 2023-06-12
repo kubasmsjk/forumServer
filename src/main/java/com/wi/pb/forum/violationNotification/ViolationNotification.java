@@ -11,7 +11,11 @@ public class ViolationNotification implements Identifiable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //private Post post;
+    
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+    
     private String description;
     //private FormUserDTO formUserDTO;
 

@@ -7,28 +7,24 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-public interface SimpleResource<E extends Identifiable<ID>,DTO extends Identifiable<ID>, ID> {
-
+public interface SimpleFacade<E extends Identifiable<ID>, DTO, ID>{
 
     CrudService<E, DTO, ID> getService();
 
-    @GetMapping
-    default List<DTO> getAllEntities(){
+    default List<DTO> findAllDto(){
         return getService().findAllDto();
     }
 
-    @GetMapping("/{id}")
-    default Optional<DTO> getEntityById(@PathVariable ID id){
+    default Optional<DTO> findDtoById(ID id){
         return getService().findDtoById(id);
     }
 
-    @PostMapping
-    default DTO addEntity(@Valid @RequestBody DTO dto) {
+    default DTO save(DTO dto) {
         return getService().save(dto);
     }
 
-    @DeleteMapping("/{id}")
-    default void deleteEntityById(@PathVariable ID id) {
+    default void deleteById(ID id) {
         getService().deleteById(id);
     }
- }
+
+}

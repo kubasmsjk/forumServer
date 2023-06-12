@@ -1,6 +1,5 @@
 package com.wi.pb.forum.user;
 
-import com.wi.pb.forum.infrastructure.CycleAvoidingMappingContext;
 import com.wi.pb.forum.infrastructure.service.CrudService;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -28,7 +27,7 @@ class ForumUserService implements CrudService<ForumUser, ForumUserDTO, Long> {
 
     @Override
     public ForumUser mapToEntity(ForumUserDTO forumUserDTO) {
-        return forumUserMapper.toEntity(forumUserDTO, new CycleAvoidingMappingContext());
+        return forumUserMapper.toEntity(forumUserDTO);
     }
 
     @Override
