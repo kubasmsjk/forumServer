@@ -16,7 +16,6 @@ public class Comment extends Post implements Identifiable<Long> {
         return super.getId();
     }
 
-
     public MainPost getMainPost() {
         return mainPost;
     }
