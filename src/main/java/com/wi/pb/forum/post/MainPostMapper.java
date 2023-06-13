@@ -11,8 +11,9 @@ import org.mapstruct.Mapping;
 interface MainPostMapper extends SimpleMapper<MainPost, MainPostDTO> {
 
     @Override
-    @Mapping(source = "mainPostDTO.author", target = "author", ignore = true)
+    @Mapping(source = "mainPostDTO.author", target = "author")
     MainPost toEntity(MainPostDTO mainPostDTO);
 
+    @Mapping(target = "id", source = "id")
     ForumUser map(ForumUserDTO value);
 }

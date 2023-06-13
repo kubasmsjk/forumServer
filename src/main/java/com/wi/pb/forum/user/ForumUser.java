@@ -3,7 +3,9 @@ package com.wi.pb.forum.user;
 import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name="ForumUser")
@@ -17,7 +19,7 @@ class ForumUser implements Identifiable<Long> {
     private String username;
     private String password;
     private String email;
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     public Long getId() {
         return id;
@@ -59,11 +61,18 @@ class ForumUser implements Identifiable<Long> {
         this.email = email;
     }
 
-    public Date getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
     }
 }

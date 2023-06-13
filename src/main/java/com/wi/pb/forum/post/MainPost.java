@@ -11,11 +11,11 @@ class MainPost extends Post implements Identifiable<Long> {
 
     private String title;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinTable(
             name = "forum_user_main_post",
             joinColumns = @JoinColumn(name = "main_post_id"),

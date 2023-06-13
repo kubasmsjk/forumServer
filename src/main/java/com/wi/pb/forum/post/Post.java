@@ -12,7 +12,7 @@ class Post implements Identifiable<Long> {
     private Long id;
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "forum_user_id", referencedColumnName = "id")
     private ForumUser author;
 

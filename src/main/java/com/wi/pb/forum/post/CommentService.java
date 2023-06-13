@@ -34,4 +34,5 @@ class CommentService implements CrudService<Comment, CommentDTO, Long> {
     public CommentDTO mapToDto(Comment entity) {
         return commentMapper.toDto(entity);
     }
+
 }

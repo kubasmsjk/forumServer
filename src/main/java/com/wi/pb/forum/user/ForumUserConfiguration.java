@@ -9,8 +9,10 @@ class ForumUserConfiguration {
 
     @Bean
     public ForumUserFacade forumUserFacade(ForumUserRepository forumUserRepository) {
+        ForumUserMapper forumUserMapper = Mappers.getMapper(ForumUserMapper.class);
         return new ForumUserFacade(
-                new ForumUserService(forumUserRepository, Mappers.getMapper(ForumUserMapper.class))
+                new ForumUserService(forumUserRepository, forumUserMapper),
+                new CreateForumUserCommandHandler(forumUserRepository, forumUserMapper)
         );
     }
 }

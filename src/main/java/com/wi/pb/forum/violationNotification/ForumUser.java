@@ -4,6 +4,7 @@ import com.wi.pb.forum.user.Role;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Immutable
@@ -18,7 +19,7 @@ class ForumUser  {
     private String username;
     private String password;
     private String email;
-    private Date createdAt;
+    private LocalDateTime createdAt;
 
     public ForumUser() {
 

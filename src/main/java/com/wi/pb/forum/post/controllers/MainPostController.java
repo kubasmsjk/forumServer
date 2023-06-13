@@ -20,4 +20,5 @@ public class MainPostController implements SimpleController<MainPostDTO, Long> {
     public MainPostFacade getFacade() {
         return mainPostFacade;
     }
+
 }

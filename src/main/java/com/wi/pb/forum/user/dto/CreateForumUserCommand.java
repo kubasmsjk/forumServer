@@ -1,25 +1,12 @@
 package com.wi.pb.forum.user.dto;
 
-import com.wi.pb.forum.infrastructure.Identifiable;
 import com.wi.pb.forum.user.Role;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
-public class ForumUserDTO implements Identifiable<Long> {
-    private Long id;
+public class CreateForumUserCommand {
     private Role role;
     private String username;
     private String email;
-    private LocalDateTime createdAt;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String password;
 
     public Role getRole() {
         return role;
@@ -45,11 +32,11 @@ public class ForumUserDTO implements Identifiable<Long> {
         this.email = email;
     }
 
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+    public String getPassword() {
+        return password;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
