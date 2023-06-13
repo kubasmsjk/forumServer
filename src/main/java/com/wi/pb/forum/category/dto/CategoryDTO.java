@@ -1,6 +1,8 @@
 package com.wi.pb.forum.category.dto;
 
-public class CategoryDTO {
+import com.wi.pb.forum.infrastructure.Identifiable;
+
+public class CategoryDTO implements Identifiable<Long> {
     private Long id;
     private String name;
 
