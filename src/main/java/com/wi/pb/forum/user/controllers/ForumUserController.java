@@ -1,31 +1,24 @@
 package com.wi.pb.forum.user.controllers;
 
 
+import com.wi.pb.forum.infrastructure.SimpleController;
 import com.wi.pb.forum.user.ForumUserFacade;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("api/user")
-public class ForumUserController {
+public class ForumUserController implements SimpleController<ForumUserDTO, Long> {
     private final ForumUserFacade forumUserFacade;
 
     public ForumUserController(ForumUserFacade forumUserFacade) {
         this.forumUserFacade = forumUserFacade;
     }
 
-    @GetMapping
-    public List<ForumUserDTO> getAllUsers() {
-        return forumUserFacade.findAll();
+    @Override
+    public ForumUserFacade getFacade() {
+        return forumUserFacade;
     }
-
-//    @PostMapping
-//    public ForumUser createUser(@RequestBody ForumUser forumUser) {
-//        return forumUserFacade.save(forumUser);
-//    }
 
 }

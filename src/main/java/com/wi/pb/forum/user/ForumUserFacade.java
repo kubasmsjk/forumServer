@@ -1,11 +1,12 @@
 package com.wi.pb.forum.user;
 
 
+import com.wi.pb.forum.infrastructure.SimpleFacade;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
 
 import java.util.List;
 
-public class ForumUserFacade {
+public class ForumUserFacade implements SimpleFacade<ForumUserDTO, Long> {
     private final ForumUserService forumUserService;
 
     public ForumUserFacade(ForumUserService forumUserService) {
@@ -14,5 +15,10 @@ public class ForumUserFacade {
 
     public List<ForumUserDTO> findAll() {
         return forumUserService.findAllDto();
+    }
+
+    @Override
+    public ForumUserService getService() {
+        return forumUserService;
     }
 }
