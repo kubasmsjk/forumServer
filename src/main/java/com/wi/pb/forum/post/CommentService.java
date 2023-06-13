@@ -4,7 +4,7 @@ import com.wi.pb.forum.infrastructure.service.CrudService;
 import com.wi.pb.forum.post.dto.CommentDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public class CommentService implements CrudService<Comment, CommentDTO, Long> {
+class CommentService implements CrudService<Comment, CommentDTO, Long> {
 
     private final CommentRepository commentRepository;
     private final CommentMapper commentMapper;

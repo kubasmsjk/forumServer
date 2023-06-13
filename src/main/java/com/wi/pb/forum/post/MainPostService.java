@@ -4,7 +4,7 @@ import com.wi.pb.forum.infrastructure.service.CrudService;
 import com.wi.pb.forum.post.dto.MainPostDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public class MainPostService implements CrudService<MainPost, MainPostDTO, Long> {
+class MainPostService implements CrudService<MainPost, MainPostDTO, Long> {
 
     private final MainPostRepository mainPostRepository;
     private final MainPostMapper mainPostMapper;

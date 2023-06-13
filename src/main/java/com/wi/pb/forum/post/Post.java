@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Post implements Identifiable<Long> {
+class Post implements Identifiable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)

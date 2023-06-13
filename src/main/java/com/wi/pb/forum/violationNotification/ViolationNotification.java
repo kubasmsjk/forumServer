@@ -1,7 +1,6 @@
 package com.wi.pb.forum.violationNotification;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
-import com.wi.pb.forum.post.Post;
 import jakarta.persistence.*;
 
 @Entity

@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Entity
 @Table
-public class MainPost extends Post implements Identifiable<Long> {
+class MainPost extends Post implements Identifiable<Long> {
 
     private String title;
 
