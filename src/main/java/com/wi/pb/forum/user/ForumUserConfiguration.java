@@ -8,11 +8,12 @@ import org.springframework.context.annotation.Configuration;
 class ForumUserConfiguration {
 
     @Bean
-    public ForumUserFacade forumUserFacade(ForumUserRepository forumUserRepository) {
+    public ForumUserFacade forumUserFacade(ForumUserRepository forumUserRepository,
+                                            RoleRepository roleRepository) {
         ForumUserMapper forumUserMapper = Mappers.getMapper(ForumUserMapper.class);
         return new ForumUserFacade(
                 new ForumUserService(forumUserRepository, forumUserMapper),
-                new CreateForumUserCommandHandler(forumUserRepository, forumUserMapper)
+                new CreateForumUserCommandHandler(forumUserRepository, roleRepository, forumUserMapper)
         );
     }
 }

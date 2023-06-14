@@ -2,18 +2,20 @@ package com.wi.pb.forum.user.dto;
 
 import com.wi.pb.forum.user.Role;
 
+import java.util.Set;
+
 public class CreateForumUserCommand {
-    private Role role;
+    private Set<Long> rolesIds;
     private String username;
     private String email;
     private String password;
 
-    public Role getRole() {
-        return role;
+    public Set<Long> getRolesIds() {
+        return rolesIds;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRolesIds(Set<Long> rolesIds) {
+        this.rolesIds = rolesIds;
     }
 
     public String getUsername() {

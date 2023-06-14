@@ -5,10 +5,11 @@ import com.wi.pb.forum.user.Role;
 
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.Set;
 
 public class ForumUserDTO implements Identifiable<Long> {
     private Long id;
-    private Role role;
+    private Set<Role> roles;
     private String username;
     private String email;
     private LocalDateTime createdAt;
@@ -21,12 +22,12 @@ public class ForumUserDTO implements Identifiable<Long> {
         this.id = id;
     }
 
-    public Role getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Role role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public String getUsername() {

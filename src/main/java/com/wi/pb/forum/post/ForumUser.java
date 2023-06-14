@@ -1,7 +1,8 @@
 package com.wi.pb.forum.post;
 
-import com.wi.pb.forum.user.Role;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import org.hibernate.annotations.Immutable;
 
 import java.time.LocalDateTime;
@@ -13,8 +14,6 @@ class ForumUser  {
 
     @Id
     private Long id;
-    @Enumerated(EnumType.STRING)
-    private Role role;
     private String username;
     private String password;
     private String email;
@@ -30,14 +29,6 @@ class ForumUser  {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
     }
 
     public String getUsername() {
