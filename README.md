@@ -12,4 +12,4 @@ Projekt powstał w ramach zajęć Programowanie aplikacji biznesowych w oparciu 
 ## Autorzy:
 * Jakub Mieczkowski ([@kubasmsjk]( https://github.com/kubasmsjk))
 * Bartosz Kraśniewski ([@bartekrul]( https://github.com/bartekrul))
-* Patrycja Biryło ([@Rav2408]( https://github.com/Rav2408))
+* Rafał Ciupek ([@Rav2408]( https://github.com/Rav2408))
