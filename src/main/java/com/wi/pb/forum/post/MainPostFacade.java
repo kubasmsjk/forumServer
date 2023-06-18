@@ -2,6 +2,7 @@ package com.wi.pb.forum.post;
 
 import com.wi.pb.forum.infrastructure.SimpleFacade;
 import com.wi.pb.forum.post.dto.MainPostDTO;
+import com.wi.pb.forum.post.dto.MainPostEditDTO;
 
 public class MainPostFacade implements SimpleFacade<MainPostDTO, Long> {
 
@@ -14,5 +15,10 @@ public class MainPostFacade implements SimpleFacade<MainPostDTO, Long> {
     @Override
     public MainPostService getService() {
         return mainPostService;
+    }
+
+
+    public MainPostDTO update(MainPostEditDTO mainPostEditDTO) {
+        return mainPostService.update(mainPostEditDTO);
     }
 }

@@ -10,6 +10,7 @@ class Post implements Identifiable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
+    @Column(length = 10000)
     private String description;
 
     @ManyToOne(cascade = CascadeType.MERGE)
