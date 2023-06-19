@@ -12,11 +12,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ForumUser forumUser = forumUserRepository.findByUsername(username);
-
-        if (forumUser == null) {
-            throw new UsernameNotFoundException("Could not find user");
-        }
+        ForumUser forumUser = forumUserRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Could not find user"));
 
         return new ForumUserDetails(forumUser);
     }
