@@ -1,6 +1,5 @@
 package com.wi.pb.forum.user.controllers;
 
-
 import com.wi.pb.forum.user.ForumUserFacade;
 import com.wi.pb.forum.user.dto.CreateForumUserCommand;
 import com.wi.pb.forum.user.dto.ForumUserDTO;

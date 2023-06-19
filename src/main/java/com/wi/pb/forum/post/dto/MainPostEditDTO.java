@@ -1,6 +1,8 @@
 package com.wi.pb.forum.post.dto;
 
-public class MainPostEditDTO {
+import com.wi.pb.forum.infrastructure.Identifiable;
+
+public class MainPostEditDTO implements Identifiable<Long> {
 
     private Long id;
     private String title;

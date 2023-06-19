@@ -5,7 +5,6 @@ import com.wi.pb.forum.user.dto.ForumUserDTO;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class CreateForumUserCommandHandler {
     private final ForumUserRepository forumUserRepository;

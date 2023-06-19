@@ -1,10 +1,7 @@
 package com.wi.pb.forum.post;
 
 import com.wi.pb.forum.infrastructure.SimpleFacade;
-import com.wi.pb.forum.infrastructure.service.CrudService;
 import com.wi.pb.forum.post.dto.CommentDTO;
-
-import java.util.List;
 
 public class CommentFacade implements SimpleFacade<CommentDTO, Long> {
     private final CommentService commentService;

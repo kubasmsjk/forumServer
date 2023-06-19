@@ -5,7 +5,6 @@ import com.wi.pb.forum.post.dto.CommentDTO;
 import com.wi.pb.forum.user.ForumUserMapper;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper( uses = {ForumUserMapper.class})
 interface CommentMapper extends SimpleMapper<Comment, CommentDTO> {

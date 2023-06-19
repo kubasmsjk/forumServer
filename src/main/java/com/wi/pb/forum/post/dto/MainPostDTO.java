@@ -1,7 +1,6 @@
 package com.wi.pb.forum.post.dto;
 
 import com.wi.pb.forum.category.dto.CategoryDTO;
-import com.wi.pb.forum.infrastructure.Identifiable;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
 
 import java.util.Set;

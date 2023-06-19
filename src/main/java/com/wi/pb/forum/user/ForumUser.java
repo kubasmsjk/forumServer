@@ -2,7 +2,6 @@ package com.wi.pb.forum.user;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
-import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

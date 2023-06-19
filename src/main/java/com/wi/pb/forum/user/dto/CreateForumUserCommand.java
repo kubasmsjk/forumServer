@@ -1,7 +1,5 @@
 package com.wi.pb.forum.user.dto;
 
-import com.wi.pb.forum.user.Role;
-
 import java.util.Set;
 
 public class CreateForumUserCommand {

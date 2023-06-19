@@ -11,7 +11,7 @@ class MainPost extends Post implements Identifiable<Long> {
 
     private String title;
 
-    @ManyToOne(cascade = {CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id")
     private Category category;
 

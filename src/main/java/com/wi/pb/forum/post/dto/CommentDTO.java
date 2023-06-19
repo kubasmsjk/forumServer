@@ -1,7 +1,5 @@
 package com.wi.pb.forum.post.dto;
 
-import com.wi.pb.forum.infrastructure.Identifiable;
-
 public class CommentDTO extends PostDTO {
 
     private MainPostDTO mainPost;

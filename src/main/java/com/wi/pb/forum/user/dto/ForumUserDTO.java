@@ -4,7 +4,6 @@ import com.wi.pb.forum.infrastructure.Identifiable;
 import com.wi.pb.forum.user.Role;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 public class ForumUserDTO implements Identifiable<Long> {
