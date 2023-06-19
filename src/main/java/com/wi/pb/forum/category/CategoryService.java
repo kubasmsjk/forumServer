@@ -4,8 +4,8 @@ import com.wi.pb.forum.category.dto.CategoryDTO;
 import com.wi.pb.forum.infrastructure.service.CrudService;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+class CategoryService implements CrudService<Category, CategoryDTO, Long> {
 
-public class CategoryService implements CrudService<Category, CategoryDTO, Long> {
     private final CategoryRepository categoryRepository;
     private final CategoryMapper categoryMapper;
 

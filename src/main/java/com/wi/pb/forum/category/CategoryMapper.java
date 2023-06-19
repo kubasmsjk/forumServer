@@ -5,5 +5,5 @@ import com.wi.pb.forum.infrastructure.SimpleMapper;
 import org.mapstruct.Mapper;
 
 @Mapper
-public interface CategoryMapper extends SimpleMapper<Category, CategoryDTO> {
+interface CategoryMapper extends SimpleMapper<Category, CategoryDTO> {
 }

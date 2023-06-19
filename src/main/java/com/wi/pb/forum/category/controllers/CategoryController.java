@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/category")
 public class CategoryController implements SimpleController<CategoryDTO, Long> {
+
     private final CategoryFacade categoryFacade;
 
     public CategoryController(CategoryFacade categoryFacade) {

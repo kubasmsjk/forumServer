@@ -4,7 +4,7 @@ import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="Category")
+@Table(name="ForumCategory")
 class Category implements Identifiable<Long> {
 
     @Id
@@ -26,7 +26,7 @@ class Category implements Identifiable<Long> {
         return name;
     }
 
-    public void String(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 }
