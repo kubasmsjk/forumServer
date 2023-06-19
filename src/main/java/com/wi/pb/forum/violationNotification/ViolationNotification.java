@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="ViolationNotification")
-public class ViolationNotification implements Identifiable<Long> {
+class ViolationNotification implements Identifiable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
