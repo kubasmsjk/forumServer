@@ -3,6 +3,9 @@ package com.wi.pb.forum.user;
 import com.wi.pb.forum.infrastructure.service.CrudService;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
+import java.util.List;
 
 class ForumUserService implements CrudService<ForumUser, ForumUserDTO, Long> {
     private final ForumUserRepository forumUserRepository;
@@ -33,5 +36,10 @@ class ForumUserService implements CrudService<ForumUser, ForumUserDTO, Long> {
     @Override
     public ForumUserDTO mapToDto(ForumUser entity) {
         return forumUserMapper.toDto(entity);
+    }
+
+    public ForumUserDTO findByUsername(String username) {
+        return mapToDto(forumUserRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username:" + username)));
     }
 }

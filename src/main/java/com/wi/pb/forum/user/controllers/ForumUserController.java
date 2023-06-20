@@ -4,6 +4,8 @@ import com.wi.pb.forum.user.ForumUserFacade;
 import com.wi.pb.forum.user.dto.CreateForumUserCommand;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
 import jakarta.validation.Valid;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,6 +23,12 @@ public class ForumUserController {
     @GetMapping
     public List<ForumUserDTO> getAllEntities(){
         return forumUserFacade.findAllDto();
+    }
+
+    @GetMapping("/current")
+    public ForumUserDTO getCurrent(){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getDetails();
+        return forumUserFacade.findByUsername(userDetails.getUsername());
     }
 
     @GetMapping("/{id}")

@@ -30,4 +30,8 @@ public class ForumUserFacade implements SimpleFacade<ForumUserDTO, Long> {
     public ForumUserDTO createUser(CreateForumUserCommand command) {
         return createForumUserCommandHandler.handle(command);
     }
+
+    public ForumUserDTO findByUsername(String username) {
+        return forumUserService.findByUsername(username);
+    }
 }
