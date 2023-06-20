@@ -30,4 +30,28 @@ class ViolationNotification implements Identifiable<Long> {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ForumUser getInformer() {
+        return informer;
+    }
+
+    public void setInformer(ForumUser informer) {
+        this.informer = informer;
+    }
 }

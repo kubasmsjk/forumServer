@@ -6,9 +6,12 @@ import com.wi.pb.forum.violationNotification.dto.ViolationNotificationDTO;
 public class ViolationNotificationFacade implements SimpleFacade<ViolationNotificationDTO, Long> {
 
     private final ViolationNotificationService violationNotificationService;
+    private final CreateViolationNotificationCommandHandler createViolationNotificationCommandHandler;
 
-    public ViolationNotificationFacade(ViolationNotificationService violationNotificationService) {
+    public ViolationNotificationFacade(ViolationNotificationService violationNotificationService,
+                                       CreateViolationNotificationCommandHandler createViolationNotificationCommandHandler) {
         this.violationNotificationService = violationNotificationService;
+        this.createViolationNotificationCommandHandler = createViolationNotificationCommandHandler;
     }
 
     @Override
@@ -16,4 +19,7 @@ public class ViolationNotificationFacade implements SimpleFacade<ViolationNotifi
         return violationNotificationService;
     }
 
+    public ViolationNotificationDTO createViolationNotification(CreateViolationNotificationCommand command) {
+        return createViolationNotificationCommandHandler.handle(command);
+    }
 }

@@ -8,9 +8,17 @@ import org.springframework.context.annotation.Configuration;
 class ViolationNotificationConfiguration {
 
     @Bean
-    public ViolationNotificationFacade violationNotificationFacade(ViolationNotificationRepository violationNotificationRepository) {
+    public ViolationNotificationFacade violationNotificationFacade(ViolationNotificationRepository violationNotificationRepository,
+                                                                   ViolationNotificationForumUserRepository violationNotificationForumUserRepository,
+                                                                   PostRepository postRepository) {
+        ViolationNotificationMapper violationNotificationMapper = Mappers.getMapper(ViolationNotificationMapper.class);
         return new ViolationNotificationFacade(
-                new ViolationNotificationService(violationNotificationRepository, Mappers.getMapper(ViolationNotificationMapper.class))
+                new ViolationNotificationService(violationNotificationRepository,
+                        violationNotificationMapper),
+                new CreateViolationNotificationCommandHandler(violationNotificationRepository,
+                         violationNotificationForumUserRepository,
+                         postRepository,
+                        violationNotificationMapper)
         );
     }
 

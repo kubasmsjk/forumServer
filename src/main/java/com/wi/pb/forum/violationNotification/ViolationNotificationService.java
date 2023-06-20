@@ -4,7 +4,7 @@ import com.wi.pb.forum.infrastructure.service.CrudService;
 import com.wi.pb.forum.violationNotification.dto.ViolationNotificationDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public class ViolationNotificationService implements CrudService<ViolationNotification, ViolationNotificationDTO, Long> {
+class ViolationNotificationService implements CrudService<ViolationNotification, ViolationNotificationDTO, Long> {
     private final ViolationNotificationRepository violationNotificationRepository;
     private final ViolationNotificationMapper violationNotificationMapper;
 
