@@ -6,7 +6,7 @@ import jakarta.persistence.Table;
 import org.hibernate.annotations.Immutable;
 
 @Immutable
-@Table(name="Category")
+@Table(name="ForumCategory")
 @Entity(name = "CategoryPost")
 class Category {
     @Id
