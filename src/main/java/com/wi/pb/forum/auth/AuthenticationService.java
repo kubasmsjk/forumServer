@@ -3,12 +3,15 @@ package com.wi.pb.forum.auth;
 import com.wi.pb.forum.config.JwtService;
 import com.wi.pb.forum.user.ForumUser;
 import com.wi.pb.forum.user.ForumUserRepository;
+import com.wi.pb.forum.user.Role;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.Date;
 
 public class AuthenticationService {
 
@@ -29,7 +32,7 @@ public class AuthenticationService {
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        //TODO zamienić role na enum lub inicjalizować role USER na starcie aplikacji
+        user.setRole(Role.USER);
         forumUserRepository.save(user);
         var jwtToken  = jwtService.generateToken(user);
         return new AuthenticationResponse(jwtToken);
