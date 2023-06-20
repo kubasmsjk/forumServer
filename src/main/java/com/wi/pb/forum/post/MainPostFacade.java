@@ -7,9 +7,12 @@ import com.wi.pb.forum.post.dto.MainPostEditDTO;
 public class MainPostFacade implements SimpleFacade<MainPostDTO, Long> {
 
     private final MainPostService mainPostService;
+    private final CreateMainPostCommandHandler createMainPostCommandHandler;
 
-    public MainPostFacade(MainPostService mainPostService) {
+    public MainPostFacade(MainPostService mainPostService,
+                          CreateMainPostCommandHandler createMainPostCommandHandler) {
         this.mainPostService = mainPostService;
+        this.createMainPostCommandHandler = createMainPostCommandHandler;
     }
 
     @Override
@@ -17,6 +20,9 @@ public class MainPostFacade implements SimpleFacade<MainPostDTO, Long> {
         return mainPostService;
     }
 
+    public MainPostDTO createMainPost(CreateMainPostCommand command) {
+        return createMainPostCommandHandler.handle(command);
+    }
 
     public MainPostDTO update(MainPostEditDTO mainPostEditDTO) {
         return mainPostService.update(mainPostEditDTO);

@@ -20,12 +20,18 @@ class PostConfiguration {
     }
 
     @Bean
-    public MainPostFacade mainPostFacade(MainPostRepository mainPostRepository) {
+    public MainPostFacade mainPostFacade(MainPostRepository mainPostRepository,
+                                         MainPostForumUserRepository mainPostForumUserRepository,
+                                         MainPostCategoryRepository mainPostCategoryRepository) {
+        MainPostMapper mainPostMapper=Mappers.getMapper(MainPostMapper.class);
         return new MainPostFacade(
                 new MainPostService(
-                        mainPostRepository, Mappers.getMapper(MainPostMapper.class),
-                        emailSender
-                )
+                        mainPostRepository, mainPostMapper,
+                        emailSender),
+                new CreateMainPostCommandHandler(mainPostRepository,
+                        mainPostForumUserRepository,
+                        mainPostCategoryRepository,
+                        mainPostMapper)
         );
     }
 }
