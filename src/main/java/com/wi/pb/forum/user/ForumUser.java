@@ -2,6 +2,8 @@ package com.wi.pb.forum.user;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
+
+import jakarta.validation.constraints.NotNull;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,16 +19,15 @@ public class ForumUser implements Identifiable<Long>, UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "forum_users_roles",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
-    )
-    private Set<Role> roles = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    @NotNull
+    private Role role;
     @Column(unique = true)
+    @NotNull
     private String username;
+    @NotNull
     private String password;
+    @NotNull
     private String email;
     private LocalDateTime createdAt;
 
@@ -38,12 +39,12 @@ public class ForumUser implements Identifiable<Long>, UserDetails {
         this.id = id;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getUsername() {
@@ -76,11 +77,11 @@ public class ForumUser implements Identifiable<Long>, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Role> roles = this.getRoles();
+        Set<Role> roles = Set.of(getRole());
         List<SimpleGrantedAuthority> authorities = new ArrayList<>();
 
         for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getName()));
+            authorities.add(new SimpleGrantedAuthority(role.name()));
         }
 
         return authorities;

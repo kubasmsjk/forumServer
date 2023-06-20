@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class ForumUserDTO implements Identifiable<Long> {
     private Long id;
-    private Set<Role> roles;
+    private Role role;
     private String username;
     private String email;
     private LocalDateTime createdAt;
@@ -21,12 +21,12 @@ public class ForumUserDTO implements Identifiable<Long> {
         this.id = id;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public String getUsername() {

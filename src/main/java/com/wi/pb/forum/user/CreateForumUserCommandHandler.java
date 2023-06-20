@@ -2,21 +2,19 @@ package com.wi.pb.forum.user;
 
 import com.wi.pb.forum.user.dto.CreateForumUserCommand;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
-
-import java.util.HashSet;
-import java.util.Set;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class CreateForumUserCommandHandler {
     private final ForumUserRepository forumUserRepository;
-    private final RoleRepository roleRepository;
     private final ForumUserMapper forumUserMapper;
+    private final PasswordEncoder passwordEncoder;
 
     public CreateForumUserCommandHandler(ForumUserRepository forumUserRepository,
-                                         RoleRepository roleRepository,
-                                         ForumUserMapper forumUserMapper) {
+                                         ForumUserMapper forumUserMapper,
+                                         PasswordEncoder passwordEncoder) {
         this.forumUserRepository = forumUserRepository;
-        this.roleRepository = roleRepository;
         this.forumUserMapper = forumUserMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public ForumUserDTO handle(CreateForumUserCommand command) {
@@ -28,10 +26,9 @@ public class CreateForumUserCommandHandler {
     }
 
     private void mapCommandToUser(CreateForumUserCommand command, ForumUser forumUser) {
-        Set<Role> roles = new HashSet<>(roleRepository.findAllById(command.getRolesIds()));
-        forumUser.setRoles(roles);
+        forumUser.setRole(command.getRole());
         forumUser.setEmail(command.getEmail());
         forumUser.setUsername(command.getUsername());
-        forumUser.setPassword(command.getPassword());
+        forumUser.setPassword(passwordEncoder.encode(command.getPassword()));
     }
 }

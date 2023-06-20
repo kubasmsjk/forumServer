@@ -20,11 +20,11 @@ class ForumUserConfiguration {
     }
 
     @Bean
-    public ForumUserFacade forumUserFacade(RoleRepository roleRepository) {
+    public ForumUserFacade forumUserFacade(PasswordEncoder passwordEncoder) {
         ForumUserMapper forumUserMapper = Mappers.getMapper(ForumUserMapper.class);
         return new ForumUserFacade(
                 new ForumUserService(forumUserRepository, forumUserMapper),
-                new CreateForumUserCommandHandler(forumUserRepository, roleRepository, forumUserMapper)
+                new CreateForumUserCommandHandler(forumUserRepository, forumUserMapper, passwordEncoder)
         );
     }
 
