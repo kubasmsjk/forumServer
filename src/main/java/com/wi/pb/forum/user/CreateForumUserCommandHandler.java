@@ -11,7 +11,9 @@ public class CreateForumUserCommandHandler {
     private final RoleRepository roleRepository;
     private final ForumUserMapper forumUserMapper;
 
-    public CreateForumUserCommandHandler(ForumUserRepository forumUserRepository, RoleRepository roleRepository, ForumUserMapper forumUserMapper) {
+    public CreateForumUserCommandHandler(ForumUserRepository forumUserRepository,
+                                         RoleRepository roleRepository,
+                                         ForumUserMapper forumUserMapper) {
         this.forumUserRepository = forumUserRepository;
         this.roleRepository = roleRepository;
         this.forumUserMapper = forumUserMapper;
