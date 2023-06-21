@@ -2,9 +2,11 @@ package com.wi.pb.forum.violationNotification;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Immutable;
 
-@Entity
+@Immutable
 @Table(name="ForumCategory")
+@Entity(name = "ViolationNotificationCategory")
 class Category implements Identifiable<Long> {
 
     @Id

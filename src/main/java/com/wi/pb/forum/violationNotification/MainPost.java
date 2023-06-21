@@ -2,11 +2,13 @@ package com.wi.pb.forum.violationNotification;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
+import org.hibernate.annotations.Immutable;
 
 import java.util.Set;
 
-@Entity
-@Table
+@Immutable
+@Table(name="MainPost")
+@Entity(name = "ViolationNotificationMainPost")
 class MainPost extends Post implements Identifiable<Long> {
 
     private String title;
@@ -23,7 +25,6 @@ class MainPost extends Post implements Identifiable<Long> {
     private Set<ForumUser> viewers;
 
 
-    @Override
     public Long getId() {
         return super.getId();
     }

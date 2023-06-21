@@ -4,9 +4,9 @@ import com.wi.pb.forum.violationNotification.dto.ViolationNotificationDTO;
 
 public class CreateViolationNotificationCommandHandler {
     private final ViolationNotificationRepository violationNotificationRepository;
-    private final ViolationNotificationMapper violationNotificationMapper;
     private final ViolationNotificationForumUserRepository violationNotificationForumUserRepository;
     private final ViolationNotificationMainPostRepository violationNotificationMainPostRepository;
+    private final ViolationNotificationMapper violationNotificationMapper;
 
     public CreateViolationNotificationCommandHandler(ViolationNotificationRepository violationNotificationRepository,
                                                      ViolationNotificationForumUserRepository violationNotificationForumUserRepository,
