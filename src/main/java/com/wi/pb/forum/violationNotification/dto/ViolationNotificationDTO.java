@@ -1,7 +1,7 @@
 package com.wi.pb.forum.violationNotification.dto;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
-import com.wi.pb.forum.post.dto.MainPostDTO;
+
 import com.wi.pb.forum.user.dto.ForumUserDTO;
 
 public class ViolationNotificationDTO implements Identifiable<Long> {
