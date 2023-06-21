@@ -30,7 +30,7 @@ public class CreateViolationNotificationCommandHandler {
                                                    ViolationNotification violationNotification) {
 
         ForumUser informer = violationNotificationForumUserRepository.findById(command.getInformerId()).orElseThrow(() -> new RuntimeException("Cannot find user"));
-        MainPost post = violationNotificationMainPostRepository.findById(command.getPostId()).orElseThrow(() -> new RuntimeException("Cannot find post"));
+        SimpleMainPost post = violationNotificationMainPostRepository.findById(command.getPostId()).orElseThrow(() -> new RuntimeException("Cannot find post"));
 
         violationNotification.setPost(post);
         violationNotification.setDescription(command.getDescription());

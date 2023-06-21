@@ -6,7 +6,7 @@ import com.wi.pb.forum.user.dto.ForumUserDTO;
 
 public class ViolationNotificationDTO implements Identifiable<Long> {
     private Long id;
-    private MainPostDTO post;
+    private SimpleMainPostDTO post;
     private String description;
     private ForumUserDTO informer;
 
@@ -18,11 +18,11 @@ public class ViolationNotificationDTO implements Identifiable<Long> {
         this.id = id;
     }
 
-    public MainPostDTO getPost() {
+    public SimpleMainPostDTO getPost() {
         return post;
     }
 
-    public void setPost(MainPostDTO post) {
+    public void setPost(SimpleMainPostDTO post) {
         this.post = post;
     }
 

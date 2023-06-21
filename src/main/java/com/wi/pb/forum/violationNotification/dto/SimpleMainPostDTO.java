@@ -1,6 +1,6 @@
 package com.wi.pb.forum.violationNotification.dto;
 
-public class MainPostDTO {
+public class SimpleMainPostDTO {
 
     private Long id;
     private String description;

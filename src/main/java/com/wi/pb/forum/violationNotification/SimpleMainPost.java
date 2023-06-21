@@ -3,12 +3,10 @@ package com.wi.pb.forum.violationNotification;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable;
 
-import java.util.Set;
-
 @Immutable
 @Table(name="MainPost")
 @Entity(name = "ViolationNotificationMainPost")
-class MainPost   {
+class SimpleMainPost {
 
     @Id
     private Long id;
