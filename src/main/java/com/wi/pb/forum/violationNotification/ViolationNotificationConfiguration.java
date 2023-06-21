@@ -10,14 +10,14 @@ class ViolationNotificationConfiguration {
     @Bean
     public ViolationNotificationFacade violationNotificationFacade(ViolationNotificationRepository violationNotificationRepository,
                                                                    ViolationNotificationForumUserRepository violationNotificationForumUserRepository,
-                                                                   PostRepository postRepository) {
+                                                                   ViolationNotificationMainPostRepository violationNotificationMainPostRepository) {
         ViolationNotificationMapper violationNotificationMapper = Mappers.getMapper(ViolationNotificationMapper.class);
         return new ViolationNotificationFacade(
                 new ViolationNotificationService(violationNotificationRepository,
                         violationNotificationMapper),
                 new CreateViolationNotificationCommandHandler(violationNotificationRepository,
                          violationNotificationForumUserRepository,
-                         postRepository,
+                        violationNotificationMainPostRepository,
                         violationNotificationMapper)
         );
     }

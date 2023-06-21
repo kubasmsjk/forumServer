@@ -6,15 +6,15 @@ public class CreateViolationNotificationCommandHandler {
     private final ViolationNotificationRepository violationNotificationRepository;
     private final ViolationNotificationMapper violationNotificationMapper;
     private final ViolationNotificationForumUserRepository violationNotificationForumUserRepository;
-    private final PostRepository postRepository;
+    private final ViolationNotificationMainPostRepository violationNotificationMainPostRepository;
 
     public CreateViolationNotificationCommandHandler(ViolationNotificationRepository violationNotificationRepository,
                                                      ViolationNotificationForumUserRepository violationNotificationForumUserRepository,
-                                                     PostRepository postRepository,
+                                                     ViolationNotificationMainPostRepository violationNotificationMainPostRepository,
                                                      ViolationNotificationMapper violationNotificationMapper) {
         this.violationNotificationRepository = violationNotificationRepository;
         this.violationNotificationForumUserRepository = violationNotificationForumUserRepository;
-        this.postRepository = postRepository;
+        this.violationNotificationMainPostRepository = violationNotificationMainPostRepository;
         this.violationNotificationMapper = violationNotificationMapper;
     }
 
@@ -30,7 +30,7 @@ public class CreateViolationNotificationCommandHandler {
                                                    ViolationNotification violationNotification) {
 
         ForumUser informer = violationNotificationForumUserRepository.findById(command.getInformerId()).orElseThrow(() -> new RuntimeException("Cannot find user"));
-        Post post = postRepository.findById(command.getPostId()).orElseThrow(() -> new RuntimeException("Cannot find post"));
+        MainPost post = violationNotificationMainPostRepository.findById(command.getPostId()).orElseThrow(() -> new RuntimeException("Cannot find post"));
 
         violationNotification.setPost(post);
         violationNotification.setDescription(command.getDescription());

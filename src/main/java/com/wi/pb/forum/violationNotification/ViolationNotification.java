@@ -13,7 +13,7 @@ class ViolationNotification implements Identifiable<Long> {
     
     @ManyToOne
     @JoinColumn(name = "post_id")
-    private Post post;
+    private MainPost post;
     
     private String description;
 
@@ -31,11 +31,11 @@ class ViolationNotification implements Identifiable<Long> {
         this.id = id;
     }
 
-    public Post getPost() {
+    public MainPost getPost() {
         return post;
     }
 
-    public void setPost(Post post) {
+    public void setPost(MainPost post) {
         this.post = post;
     }
 

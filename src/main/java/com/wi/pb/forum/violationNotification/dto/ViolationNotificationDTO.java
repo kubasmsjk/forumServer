@@ -1,12 +1,12 @@
 package com.wi.pb.forum.violationNotification.dto;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
-import com.wi.pb.forum.post.dto.PostDTO;
+import com.wi.pb.forum.post.dto.MainPostDTO;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
 
 public class ViolationNotificationDTO implements Identifiable<Long> {
     private Long id;
-    private PostDTO post;
+    private MainPostDTO post;
     private String description;
     private ForumUserDTO informer;
 
@@ -18,11 +18,11 @@ public class ViolationNotificationDTO implements Identifiable<Long> {
         this.id = id;
     }
 
-    public PostDTO getPost() {
+    public MainPostDTO getPost() {
         return post;
     }
 
-    public void setPost(PostDTO post) {
+    public void setPost(MainPostDTO post) {
         this.post = post;
     }
 
