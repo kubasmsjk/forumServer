@@ -40,6 +40,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(request -> request
                 .requestMatchers(
                         "/",
+                        "/v3/api-docs/**",
                         "/api/auth/**",
                         "/swagger-ui/**").permitAll()
                 .requestMatchers("/api/**").authenticated()
@@ -51,8 +52,6 @@ public class SecurityConfig {
             .addFilterBefore(
                     javaAuthenticationFilter,
                     UsernamePasswordAuthenticationFilter.class);
-
-        ;
 
         return http.build();
     }
