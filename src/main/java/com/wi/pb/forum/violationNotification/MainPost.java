@@ -9,7 +9,7 @@ import java.util.Set;
 @Immutable
 @Table(name="MainPost")
 @Entity(name = "ViolationNotificationMainPost")
-class MainPost extends Post implements Identifiable<Long> {
+class MainPost extends Post {
 
     private String title;
 

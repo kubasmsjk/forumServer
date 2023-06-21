@@ -1,25 +1,25 @@
 package com.wi.pb.forum.violationNotification;
 
-import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
 import org.hibernate.annotations.Immutable;
 
 @Immutable
 @Table(name="ForumCategory")
 @Entity(name = "ViolationNotificationCategory")
-class Category implements Identifiable<Long> {
+class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
-    @Override
+    public Category() {
+
+    }
+
     public Long getId() {
         return id;
     }
 
-    @Override
     public void setId(Long id) {
         this.id = id;
     }
