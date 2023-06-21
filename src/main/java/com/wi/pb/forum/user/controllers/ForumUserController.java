@@ -3,11 +3,8 @@ package com.wi.pb.forum.user.controllers;
 import com.wi.pb.forum.user.ForumUserFacade;
 import com.wi.pb.forum.user.dto.CreateForumUserCommand;
 import com.wi.pb.forum.user.dto.ForumUserDTO;
+import com.wi.pb.forum.utils.SecurityUtil;
 import jakarta.validation.Valid;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,9 +26,8 @@ public class ForumUserController {
 
     @GetMapping("/current")
     public ForumUserDTO getCurrent(){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentPrincipalName = authentication.getName();
-        return forumUserFacade.findByUsername(currentPrincipalName);
+        String currentUserName = SecurityUtil.getCurrentUserNameOrEmptyString();
+        return forumUserFacade.findByUsername(currentUserName);
     }
 
     @GetMapping("/{id}")

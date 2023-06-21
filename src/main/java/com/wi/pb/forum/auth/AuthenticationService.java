@@ -6,15 +6,16 @@ import com.wi.pb.forum.user.ForumUserRepository;
 import com.wi.pb.forum.user.Role;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.Date;
-
 public class AuthenticationService {
 
+    private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class.getName());
     private final ForumUserRepository forumUserRepository;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
@@ -28,13 +29,18 @@ public class AuthenticationService {
     }
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = new ForumUser();
+        boolean exist = forumUserRepository.isUserExistByUsername(request.getUsername());
+        if (exist) {
+            logger.error(String.format("User with username: %s already exist.", request.getUsername()));
+            throw new IllegalStateException(String.format("User with username: %s already exist.", request.getUsername()));
+        }
+        ForumUser user = new ForumUser();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(Role.USER);
         forumUserRepository.save(user);
-        var jwtToken  = jwtService.generateToken(user);
+        String jwtToken  = jwtService.generateToken(user);
         return new AuthenticationResponse(jwtToken);
     }
 
