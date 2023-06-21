@@ -27,7 +27,7 @@ class PostConfiguration {
         return new MainPostFacade(
                 new MainPostService(
                         mainPostRepository, mainPostMapper,
-                        emailSender),
+                        emailSender, mainPostForumUserRepository),
                 new CreateMainPostCommandHandler(mainPostRepository,
                         mainPostForumUserRepository,
                         mainPostCategoryRepository,

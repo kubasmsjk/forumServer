@@ -27,4 +27,12 @@ public class MainPostFacade implements SimpleFacade<MainPostDTO, Long> {
     public MainPostDTO update(MainPostEditDTO mainPostEditDTO) {
         return mainPostService.update(mainPostEditDTO);
     }
+
+    public void follow(Long id) {
+        mainPostService.follow(id,true);
+    }
+
+    public void unfollow(Long id) {
+        mainPostService.follow(id,false);
+    }
 }

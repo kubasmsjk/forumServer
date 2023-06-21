@@ -47,5 +47,15 @@ public class MainPostController {
         return mainPostFacade.update(mainPostEditDTO);
     }
 
+    @PostMapping("/follow/{id}")
+    public void follow(@PathVariable("id") Long id) {
+        mainPostFacade.follow(id);
+    }
+
+    @PostMapping("/unfollow/{id}")
+    public void unfollow(@PathVariable("id") Long id) {
+        mainPostFacade.unfollow(id);
+    }
+
 }
 

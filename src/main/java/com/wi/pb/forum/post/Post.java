@@ -3,8 +3,8 @@ package com.wi.pb.forum.post;
 import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 class Post implements Identifiable<Long> {
 
     @Id

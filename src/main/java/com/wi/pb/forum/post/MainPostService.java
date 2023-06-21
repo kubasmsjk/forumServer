@@ -5,6 +5,7 @@ import com.wi.pb.forum.email.EmailTemplate;
 import com.wi.pb.forum.infrastructure.service.CrudService;
 import com.wi.pb.forum.post.dto.MainPostDTO;
 import com.wi.pb.forum.post.dto.MainPostEditDTO;
+import com.wi.pb.forum.utils.SecurityUtil;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 class MainPostService implements CrudService<MainPost, MainPostDTO, Long> {
@@ -12,13 +13,16 @@ class MainPostService implements CrudService<MainPost, MainPostDTO, Long> {
     private final MainPostRepository mainPostRepository;
     private final MainPostMapper mainPostMapper;
     private final EmailSender emailSender;
+    private final MainPostForumUserRepository forumUserRepository;
 
     public MainPostService(MainPostRepository mainPostRepository,
                            MainPostMapper mainPostMapper,
-                           EmailSender emailSender) {
+                           EmailSender emailSender,
+                           MainPostForumUserRepository forumUserRepository) {
         this.mainPostRepository = mainPostRepository;
         this.mainPostMapper = mainPostMapper;
         this.emailSender = emailSender;
+        this.forumUserRepository = forumUserRepository;
     }
 
     @Override
@@ -61,5 +65,20 @@ class MainPostService implements CrudService<MainPost, MainPostDTO, Long> {
         }
     }
 
+    public void follow(Long id, boolean follow) {
+        MainPost mainPost = mainPostRepository.findById(id)
+                .orElseThrow(()-> new IllegalArgumentException(String.format("MainPost not found by id:%s",id)));
+
+        ForumUser forumUser = forumUserRepository.findByUsername(SecurityUtil.getCurrentUserNameOrEmptyString())
+                .orElseThrow(()-> new IllegalArgumentException("User not logged in"));
+
+        if (follow) {
+            mainPost.getViewers().add(forumUser);
+        } else {
+            mainPost.getViewers().remove(forumUser);
+        }
+
+        mainPostRepository.save(mainPost);
+    }
 }
 
