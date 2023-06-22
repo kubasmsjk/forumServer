@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 @Table
 class Comment extends Post implements Identifiable<Long> {
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "main_post_id")
     private MainPost mainPost;
 

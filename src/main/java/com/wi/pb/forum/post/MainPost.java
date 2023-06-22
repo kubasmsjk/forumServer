@@ -3,6 +3,7 @@ package com.wi.pb.forum.post;
 import com.wi.pb.forum.infrastructure.Identifiable;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,6 +22,9 @@ class MainPost extends Post implements Identifiable<Long> {
             joinColumns = @JoinColumn(name = "main_post_id"),
             inverseJoinColumns = @JoinColumn(name = "forum_user_id"))
     private Set<ForumUser> viewers;
+
+    @OneToMany(mappedBy = "mainPost", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
 
     @Override
