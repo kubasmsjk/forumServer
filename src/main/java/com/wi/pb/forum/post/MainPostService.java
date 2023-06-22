@@ -3,10 +3,13 @@ package com.wi.pb.forum.post;
 import com.wi.pb.forum.email.EmailSender;
 import com.wi.pb.forum.email.EmailTemplate;
 import com.wi.pb.forum.infrastructure.service.CrudService;
+import com.wi.pb.forum.post.dto.CommentDTO;
 import com.wi.pb.forum.post.dto.MainPostDTO;
 import com.wi.pb.forum.post.dto.MainPostEditDTO;
 import com.wi.pb.forum.utils.SecurityUtil;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 class MainPostService implements CrudService<MainPost, MainPostDTO, Long> {
 
@@ -79,6 +82,9 @@ class MainPostService implements CrudService<MainPost, MainPostDTO, Long> {
         }
 
         mainPostRepository.save(mainPost);
+    }
+    public List<MainPostDTO> findAllByMainPostId(Long id) {
+        return mapToDto(mainPostRepository.findAllByAuthorId(id));
     }
 }
 

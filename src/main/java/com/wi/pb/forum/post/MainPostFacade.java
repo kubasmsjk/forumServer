@@ -1,8 +1,11 @@
 package com.wi.pb.forum.post;
 
 import com.wi.pb.forum.infrastructure.SimpleFacade;
+import com.wi.pb.forum.post.dto.CommentDTO;
 import com.wi.pb.forum.post.dto.MainPostDTO;
 import com.wi.pb.forum.post.dto.MainPostEditDTO;
+
+import java.util.List;
 
 public class MainPostFacade implements SimpleFacade<MainPostDTO, Long> {
 
@@ -34,5 +37,9 @@ public class MainPostFacade implements SimpleFacade<MainPostDTO, Long> {
 
     public void unfollow(Long id) {
         mainPostService.follow(id,false);
+    }
+
+    public List<MainPostDTO> findDtosById(Long id) {
+        return mainPostService.findAllByMainPostId(id);
     }
 }

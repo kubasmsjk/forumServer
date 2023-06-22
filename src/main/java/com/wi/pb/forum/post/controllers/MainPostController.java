@@ -2,6 +2,7 @@ package com.wi.pb.forum.post.controllers;
 
 import com.wi.pb.forum.post.CreateMainPostCommand;
 import com.wi.pb.forum.post.MainPostFacade;
+import com.wi.pb.forum.post.dto.CommentDTO;
 import com.wi.pb.forum.post.dto.MainPostDTO;
 import com.wi.pb.forum.post.dto.MainPostEditDTO;
 import jakarta.validation.Valid;
@@ -28,6 +29,11 @@ public class MainPostController {
     @GetMapping("/{id}")
     public Optional<MainPostDTO> getEntityById(@PathVariable Long id){
         return mainPostFacade.findDtoById(id);
+    }
+
+    @GetMapping("/posts/{id}")
+    public List<MainPostDTO> getMainPostsById(@PathVariable("id") Long id){
+        return mainPostFacade.findDtosById(id);
     }
 
     @PostMapping
