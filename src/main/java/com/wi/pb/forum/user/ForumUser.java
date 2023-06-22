@@ -16,7 +16,7 @@ import java.util.*;
 public class ForumUser implements Identifiable<Long>, UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Enumerated(EnumType.STRING)

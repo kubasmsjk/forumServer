@@ -32,7 +32,7 @@ public class AuthenticationService {
         boolean exist = forumUserRepository.isUserExistByUsername(request.getUsername());
         if (exist) {
             logger.error(String.format("User with username: %s already exist.", request.getUsername()));
-            throw new IllegalStateException(String.format("User with username: %s already exist.", request.getUsername()));
+            throw new IllegalArgumentException(String.format("User with username: %s already exist.", request.getUsername()));
         }
         ForumUser user = new ForumUser();
         user.setUsername(request.getUsername());

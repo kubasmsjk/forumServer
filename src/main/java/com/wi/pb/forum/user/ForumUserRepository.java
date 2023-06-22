@@ -9,6 +9,6 @@ public interface ForumUserRepository extends JpaRepository<ForumUser, Long> {
     Optional<ForumUser> findByUsername(String username);
 
     @Query(nativeQuery = true,
-            value = "SELECT EXISTS ( SELECT 1 FROM forum_user f WHERE f.username = :username)")
+            value = "SELECT EXISTS ( SELECT f.id FROM forum_user f WHERE f.username = :username)")
     boolean isUserExistByUsername(String username);
 }
