@@ -13,10 +13,17 @@ class PostConfiguration {
     private EmailSender emailSender;
 
     @Bean
-    public CommentFacade commentFacade(CommentRepository commentRepository) {
+    public CommentFacade commentFacade(CommentRepository commentRepository,
+                                       MainPostRepository mainPostRepository,
+                                       MainPostForumUserRepository mainPostForumUserRepository) {
+        CommentMapper commentMapper=Mappers.getMapper(CommentMapper.class);
         return new CommentFacade(
-                new CommentService(commentRepository, Mappers.getMapper(CommentMapper.class))
-        );
+                new CommentService(commentRepository,
+                        commentMapper),
+                new CreateCommentCommandHandler(commentRepository,
+                        mainPostRepository,
+                        mainPostForumUserRepository,
+                        commentMapper));
     }
 
     @Bean

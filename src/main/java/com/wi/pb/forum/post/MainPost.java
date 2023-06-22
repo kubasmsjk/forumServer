@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name="MainPost")
 class MainPost extends Post implements Identifiable<Long> {
 
     private String title;

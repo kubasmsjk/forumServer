@@ -4,8 +4,6 @@ import com.wi.pb.forum.post.CreateMainPostCommand;
 import com.wi.pb.forum.post.MainPostFacade;
 import com.wi.pb.forum.post.dto.MainPostDTO;
 import com.wi.pb.forum.post.dto.MainPostEditDTO;
-import com.wi.pb.forum.violationNotification.CreateViolationNotificationCommand;
-import com.wi.pb.forum.violationNotification.dto.ViolationNotificationDTO;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
