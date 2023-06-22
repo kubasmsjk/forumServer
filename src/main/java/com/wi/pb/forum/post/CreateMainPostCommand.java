@@ -1,15 +1,10 @@
 package com.wi.pb.forum.post;
 
-import com.wi.pb.forum.user.dto.ForumUserDTO;
-
-import java.util.Set;
-
 public class CreateMainPostCommand {
     private String description;
     private Long authorId;
     private String title;
     private Long categoryId;
-    private Set<ForumUser> viewers;
 
     public String getDescription() {
         return description;
@@ -43,11 +38,4 @@ public class CreateMainPostCommand {
         this.categoryId = categoryId;
     }
 
-    public Set<ForumUser> getViewers() {
-        return viewers;
-    }
-
-    public void setViewers(Set<ForumUser> viewers) {
-        this.viewers = viewers;
-    }
 }

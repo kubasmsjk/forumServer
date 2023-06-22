@@ -37,7 +37,6 @@ public class CreateMainPostCommandHandler {
         mainPost.setTitle(command.getTitle());
         mainPost.setDescription(command.getDescription());
         mainPost.setCategory(category);
-        mainPost.setViewers(command.getViewers());
         mainPost.setAuthor(author);
 
     }
