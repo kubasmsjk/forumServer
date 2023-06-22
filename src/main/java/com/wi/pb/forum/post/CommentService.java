@@ -4,6 +4,8 @@ import com.wi.pb.forum.infrastructure.service.CrudService;
 import com.wi.pb.forum.post.dto.CommentDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 class CommentService implements CrudService<Comment, CommentDTO, Long> {
 
     private final CommentRepository commentRepository;
@@ -35,4 +37,7 @@ class CommentService implements CrudService<Comment, CommentDTO, Long> {
         return commentMapper.toDto(entity);
     }
 
+    public List<CommentDTO> findAllByMainPostId(Long id) {
+        return mapToDto(commentRepository.findAllByMainPostId(id));
+    }
 }

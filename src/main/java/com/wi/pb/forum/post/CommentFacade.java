@@ -24,6 +24,6 @@ public class CommentFacade implements SimpleFacade<CommentDTO, Long> {
     }
 
     public List<CommentDTO> findDtosById(Long id) {
-       return commentService.findAllDtoById(List.of(id));
+       return commentService.findAllByMainPostId(id);
     }
 }
