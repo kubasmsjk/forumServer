@@ -15,9 +15,6 @@ class SimpleMainPost {
     private String description;
     private String title;
 
-    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
-    private List<ViolationNotification> violationNotifications;
-
     public Long getId() {
         return id;
     }

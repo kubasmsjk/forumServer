@@ -1,6 +1,7 @@
 package com.wi.pb.forum.post;
 
 import com.wi.pb.forum.infrastructure.Identifiable;
+import com.wi.pb.forum.violationNotification.ViolationNotification;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -26,6 +27,8 @@ class MainPost extends Post implements Identifiable<Long> {
     @OneToMany(mappedBy = "mainPost", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<ViolationNotification> violationNotifications;
 
     @Override
     public Long getId() {

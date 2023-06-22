@@ -5,13 +5,14 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name="ViolationNotification")
+public
 class ViolationNotification implements Identifiable<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "post_id")
     private SimpleMainPost post;
     
