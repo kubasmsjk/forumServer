@@ -51,9 +51,9 @@ public class AuthenticationService {
                         request.getPassword()
                 )
         );
-        var user = forumUserRepository.findByUsername(request.getUsername())
+        ForumUser user = forumUserRepository.findByUsername(request.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("Could not find user"));
-        var jwtToken  = jwtService.generateToken(user);
+        String jwtToken  = jwtService.generateToken(user);
         return new AuthenticationResponse(jwtToken);
     }
 
