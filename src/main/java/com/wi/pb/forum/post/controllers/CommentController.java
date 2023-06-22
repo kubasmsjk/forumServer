@@ -3,6 +3,7 @@ package com.wi.pb.forum.post.controllers;
 import com.wi.pb.forum.post.CommentFacade;
 import com.wi.pb.forum.post.CreateCommentCommand;
 import com.wi.pb.forum.post.dto.CommentDTO;
+import com.wi.pb.forum.violationNotification.dto.ViolationNotificationDTO;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,6 +28,11 @@ public class CommentController {
     @GetMapping("/{id}")
     public Optional<CommentDTO> getEntityById(@PathVariable Long id){
         return commentFacade.findDtoById(id);
+    }
+
+    @GetMapping("/entities/{id}")
+    public List<CommentDTO> getEntitiesById(@PathVariable("id") Long id){
+        return commentFacade.findDtosById(id);
     }
 
     @PostMapping
