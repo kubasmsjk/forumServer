@@ -2,6 +2,7 @@ package com.wi.pb.forum.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,14 +16,14 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
-    private final JwtAuthenticationFilter javaAuthenticationFilter;
+    private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public SecurityConfig(UserDetailsService userDetailsService,
                           PasswordEncoder passwordEncoder,
-                          JwtAuthenticationFilter javaAuthenticationFilter) {
+                          JwtAuthenticationFilter jwtAuthenticationFilter) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
-        this.javaAuthenticationFilter = javaAuthenticationFilter;
+        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
     public AuthenticationProvider authenticationProvider() {
@@ -43,14 +44,14 @@ public class SecurityConfig {
                         "/v3/api-docs/**",
                         "/api/auth/**",
                         "/swagger-ui/**").permitAll()
+                .requestMatchers(HttpMethod.DELETE,"/api/main-post/**").hasRole("ADMIN")
                 .requestMatchers("/api/**").authenticated()
-               // .requestMatchers("/**").hasAnyRole("ADMIN","USER")
                 .anyRequest().authenticated()
             )
             .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authenticationProvider(authenticationProvider())
             .addFilterBefore(
-                    javaAuthenticationFilter,
+                    jwtAuthenticationFilter,
                     UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

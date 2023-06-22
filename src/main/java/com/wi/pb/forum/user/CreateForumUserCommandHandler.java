@@ -22,7 +22,7 @@ public class CreateForumUserCommandHandler {
     }
 
     public ForumUserDTO handle(CreateForumUserCommand command) {
-        if (!forumUserRepository.isUserExistByUsername(command.getUsername())) {
+        if (forumUserRepository.isUserExistByUsername(command.getUsername())) {
             logger.error(String.format("User with username: %s already exist.", command.getUsername()));
             throw new IllegalStateException(String.format("User with username: %s already exist.", command.getUsername()));
         }
