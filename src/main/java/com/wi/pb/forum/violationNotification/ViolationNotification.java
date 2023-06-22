@@ -17,7 +17,7 @@ class ViolationNotification implements Identifiable<Long> {
     
     private String description;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "forum_user_id", referencedColumnName = "id")
     private ForumUser informer;
 
