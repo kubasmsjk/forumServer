@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 class Post implements Identifiable<Long> {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(length = 10000)
     private String description;
